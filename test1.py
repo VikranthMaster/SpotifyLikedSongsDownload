@@ -11,9 +11,9 @@ OAUTH_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 
 # Change to your application settings
 class Settings:
-    client_id = '4317397b61a746dfaa72f66da2d20e2b'
-    client_secret = 'e4a4fcd9d2794bf2aa9acbbe64d4462d'
-    redirect_uri = 'https://google.com/'
+    client_id = 'CLIENT_ID'
+    client_secret = 'CLIENT_SECERT'
+    redirect_uri = 'REDIRECT_URI'
 
 
 def authenticate(scope=None):
@@ -55,7 +55,7 @@ def show_tracks(results):
     for item in results['items']:
         track = item['track']
         name = (track['artists'][0]['name'], track['name'])
-        with open("songs.txt","a", encoding="utf-8") as f:
+        with open("file","a", encoding="utf-8") as f:
             f.write(str(name) + "\n")
 
 if __name__ == '__main__':
@@ -66,21 +66,3 @@ if __name__ == '__main__':
         results = sp.next(results)
         show_tracks(results)
 
-    # user_b = authenticate(scope='user-library-read')
-    # print('user_a', user_a)
-    # # print('user_b', user_b)
-
-    # for url in ['https://api.spotify.com/v1/me/tracks',
-    #             'https://api.spotify.com/v1/me']:
-    #     for user in [user_a]:
-    #         token = 'Bearer ' + user['access_token']
-    #         # Application: Uses access token in requests to Web API
-    #         # Spotify: Returns request data
-    #         r = requests.get(url, headers={'authorization': token})
-    #         if r.status_code != 200:
-    #             print(r.text)
-    #         else:
-    #             print([
-    #                 '{}: {}'.format(key, str(value)[:20])
-    #                 for key, value in r.json().items()
-    #             ])
